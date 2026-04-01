@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strawberry 360° | 프리미엄 딸기 관찰 시뮬레이터</title>
+    <meta name="description" content="3D로 만나는 완벽한 딸기 관찰 시뮬레이터. 세밀한 질감과 구조를 탐구해보세요.">
+    
+    <!-- Google Fonts: Outfit for modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <canvas id="canvas-3d"></canvas>
+
+        <!-- UI Overlay -->
+        <header>
+            <div class="logo">
+                <span class="emoji">🍓</span>
+                <h1>Strawberry <span>360°</span></h1>
+            </div>
+            <div class="tagline">The Ultimate Observation Simulator</div>
+        </header>
+
+        <main id="ui-container">
+            <div class="side-panel left">
+                <section class="card glass">
+                    <h2>관찰 정보 (Analysis)</h2>
+                    <div class="info-item" id="info-state">
+                        <span class="label">상태</span>
+                        <span class="value">숙성됨 (Ripe)</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="label">품종</span>
+                        <span class="value">설향 (Sulhyang)</span>
+                    </div>
+                    <p class="description">
+                        딸기는 장미과 딸기속에 속하는 채소입니다. 수많은 씨앗(수과)이 표면에 박혀 있으며, 우리가 먹는 부분은 꽃받침이 발달한 헛열매입니다.
+                    </p>
+                </section>
+
+                <section class="card glass controls">
+                    <h2>시각화 설정</h2>
+                    <div class="control-group">
+                        <label for="ripeness">숙성도 (Ripeness)</label>
+                        <input type="range" id="ripeness" min="0" max="100" value="100">
+                    </div>
+                    <div class="control-group">
+                        <label for="wireframe">와이어프레임</label>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="wireframe">
+                            <span class="slider"></span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="cross">단면 관찰 (Cross Section)</label>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="cross">
+                            <span class="slider"></span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="side-panel right">
+                <section class="card glass discovery">
+                    <h2>주요 관찰 포인트</h2>
+                    <ul class="points-list">
+                        <li data-target="seeds">
+                            <strong>수과 (Seeds)</strong>
+                            <p>표면의 작은 씨앗들은 사실 개별적인 열매입니다.</p>
+                        </li>
+                        <li data-target="calyx">
+                            <strong>꽃받침 (Calyx)</strong>
+                            <p>딸기 상단의 초록색 잎 부분입니다.</p>
+                        </li>
+                        <li data-target="surface">
+                            <strong>표면 질감</strong>
+                            <p>수분과 당도가 느껴지는 광택 피니시.</p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="bottom-bar">
+                <div class="hint">마우스 드래그로 회전 | 스크롤로 확대/축소</div>
+            </div>
+        </main>
+
+        <div id="loader">
+            <div class="spinner"></div>
+            <div class="loading-text">시뮬레이션 초기화 중...</div>
+        </div>
+    </div>
+
+    <!-- Three.js Setup with Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/",
+            "gsap": "https://unpkg.com/gsap@3.12.2/index.js"
+        }
+    }
+    </script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
